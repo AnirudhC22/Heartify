@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/script.js"></script>
+    <style>
+
+        #headn{
+            font-family: "Kanit", serif;
+            font-weight: 500;
+            font-style: normal;
+            letter-spacing: 10px;
+        }
+        .roller {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, #0609c8, #7a0e06);
+            border-radius: 10px;
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        .roller::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            background: #06ffac;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .roller::-webkit-slider-thumb:hover {
+            background: #05df43;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-gray-800 p-10 rounded-2xl shadow-2xl max-w-6xl w-full">
+        <h2 id="headn" class="text-5xl font-bold text-center text-white mb-8">Medical Form</h2>
+        <form action="/predict" method="post" class="space-y-10">
+            <div>
+                <label class="block text-gray-300 font-medium">Age: <span id="ageValue" class="text-green-400">50</span></label>
+                <input type="range" name="age" min="0" max="100" value="50" class="roller" oninput="document.getElementById('ageValue').innerText = this.value">
+            </div>
+            <div>
+                <label class="block text-gray-300 font-medium">Sex:</label>
+                <select name="sex" required class="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+
+                <input type="hidden" name="Sex_M" value="0">
+                <input type="hidden" name="Sex_F" value="0">
+            </div>
+
+            <div>
+                <label class="block text-gray-300 font-medium">Chest Pain Type:</label>
+                <select name="cp" required class="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                    <option value="0">Typical Angina (TA)</option>
+                    <option value="1">Atypical Angina (ATA)</option>
+                    <option value="2">Non-Anginal Pain (NAP)</option>
+                    <option value="3">Asymptomatic (ASY)</option>
+                </select>
+
+            <input type="hidden" name="ChestPainType_TA" value="0">
+            <input type="hidden" name="ChestPainType_ATA" value="0">
+            <input type="hidden" name="ChestPainType_NAP" value="0">
+            <input type="hidden" name="ChestPainType_ASY" value="0">
+
+            </div>
+
+
+            <div>
+                <label class="block text-gray-300 font-medium">Resting BP: <span id="bpValue" class="text-green-400">120</span></label>
+                <input type="range" name="trestbps" min="60" max="202" value="120" class="roller" oninput="document.getElementById('bpValue').innerText = this.value">
+            </div>
+            <div>
+                <label class="block text-gray-300 font-medium">Cholesterol: <span id="cholValue" class="text-green-400">200</span></label>
+                <input type="range" name="chol" min="100" max="400" value="200" class="roller" oninput="document.getElementById('cholValue').innerText = this.value">
+            </div>
+            <div>
+                <label class="block text-gray-300 font-medium">Fasting Blood Sugar:</label>
+                <select name="fbs" required class="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                    <option value="1">Above 120 mg/dl</option>
+                    <option value="0">120 mg/dl or Below</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-300 font-medium">Resting ECG:</label>
+                <select name="restecg" required class="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                    <option value="0">Normal</option>
+                    <option value="1">ST-T Wave Abnormality (ST)</option>
+                    <option value="2">Left Ventricular Hypertrophy (LVH)</option>
+                </select>
+
+                <input type="hidden" name="RestingECG_Normal" value="0">
+        <input type="hidden" name="RestingECG_LVH" value="0">
+        <input type="hidden" name="RestingECG_ST" value="0">
+            </div>
+            <div>
+                <label class="block text-gray-300 font-medium">Max Heart Rate: <span id="thalachValue" class="text-green-400">130</span></label>
+                <input type="range" name="thalach" min="60" max="202" value="130" class="roller" oninput="document.getElementById('thalachValue').innerText = this.value">
+            </div>
+            <div>
+                <label class="block text-gray-300 font-medium">Exercise Induced Angina:</label>
+                <select name="exang" required class="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <input type="hidden" name="ExerciseAngina_Y" value="0">
+                <input type="hidden" name="ExerciseAngina_N" value="0">
+
+            </div>
+
+
+            <div>
+                <label class="block text-gray-300 font-medium">Oldpeak: <span id="oldpeakValue" class="text-green-400">1</span></label>
+                <input type="range" name="oldpeak" min="0" max="6" step="0.1" value="1" class="roller" oninput="document.getElementById('oldpeakValue').innerText = this.value">
+            </div>
+            <div>
+                <label class="block text-gray-300 font-medium">Slope:</label>
+                <select name="slope" required class="w-full p-3 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                    <option value="0">Upsloping</option>
+                    <option value="1">Flat</option>
+                    <option value="2">Downsloping</option>
+                </select>
+
+                <input type="hidden" name="ST_Slope_Up" value="0">
+                <input type="hidden" name="ST_Slope_Flat" value="0">
+                <input type="hidden" name="ST_Slope_Down" value="0">
+            </div>
+
+
+            <div>
+                <label class="block text-gray-300 font-medium">Major Vessels: <span id="caValue" class="text-green-400">1</span></label>
+                <input type="range" name="ca" min="0" max="3" value="1" class="roller" oninput="document.getElementById('caValue').innerText = this.value">
+            </div>
+            <div>
+                <label class="block text-gray-300 font-medium">Thal: <span id="thalValue" class="text-green-400">1</span></label>
+                <input type="range" name="thal" min="0" max="3" value="1" class="roller" oninput="document.getElementById('thalValue').innerText = this.value">
+            </div>
+            <div>
+                <input type="submit" value="Predict" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl transition-transform transform hover:scale-105 cursor-pointer mt-6">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

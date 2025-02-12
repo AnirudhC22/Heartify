@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen p-7">
+    <div class="bg-gray-800 text-white rounded-3xl shadow-2xl max-w-full   w-screen p-20 text-center">
+        <h1 class="text-5xl font-bold text-green-400 mb-9">Prediction Result</h1>
+        <p class="text-3xl mb-8">
+            Our AI model has predicted that you have 
+            <span class="font-bold text-yellow-400">{{ result }}</span>.
+        </p>
+
+        <a href="/xai_intro" class="text-3xl inline-block bg-green-500 mt-9 hover:bg-green-700 text-white font-semibold py-8 px-8 rounded-2xl transition-transform transform hover:scale-105">
+            What led to this prediction?
+        </a>
+
+        <div class="mt-9">
+            <a href="/" class="text-xl text-gray-400 hover:text-white text-sm">Back to Form</a>
+        </div>
+    </div>
+</body>
+</html>

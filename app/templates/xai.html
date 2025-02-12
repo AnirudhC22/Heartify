@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XAI - SHAP Explanations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <h1 class="text-4xl font-bold text-center mb-6 text-white">Heart Disease Prediction - SHAP Explanations</h1>
+
+    <div class="flex flex-col md:flex-row gap-6 bg-gray-900 shadow-xl rounded-2xl p-6 w-full max-w-6xl">
+        <!-- Chart Section -->
+        <div class="w-full md:w-1/2 flex justify-center items-center">
+            <img src="data:image/png;base64,{{ chart }}" alt="SHAP Chart" class="rounded-xl border-4 border-gray-700 shadow-lg">
+        </div>
+
+        <!-- AI Explanation Section -->
+        <div class="w-full md:w-1/2 bg-gray-800 p-4 rounded-xl shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-400 mb-4">Explanation</h2>
+            <p class="text-gray-300 leading-relaxed">{{ ai_explanation }}</p>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-center gap-4 mt-6">
+        <a href="/xai?chart_id={{ prev_chart }}">
+            <button class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition" {% if chart_id == 0 %}disabled{% endif %}>Previous</button>
+        </a>
+
+        <a href="/xai?chart_id={{ next_chart }}">
+            <button class="bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-md transition" {% if chart_id == (max_chart) %}disabled{% endif %}>Next</button>
+        </a>
+    </div>
+</body>
+</html>

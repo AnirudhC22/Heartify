@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction - Explainable AI (XAI)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col items-center justify-center p-6">
+    <div class="max-w-4xl text-center">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-blue-300 mb-6">Explainable AI (XAI) in Heart Disease Prediction</h1>
+        <p class="text-lg md:text-xl leading-relaxed text-gray-300 mb-8">
+            Our heart disease prediction model is powered by Explainable AI (XAI) to ensure transparency and trust.
+            We use <span class="font-semibold text-blue-300">SHAP (SHapley Additive exPlanations)</span> to explain how
+            our model makes predictions, providing insights into the contribution of each feature towards the result.
+        </p>
+        
+        <div class="bg-gray-800 p-10 rounded-xl shadow-lg border border-gray-700">
+            <h2 class="text-2xl font-bold text-green-100 mb-4">Why Explainable AI?</h2>
+            <ul class="list-disc list-inside space-y-2 text-left">
+                <li>Enhances model transparency and accountability.</li>
+                <li>Helps understand the impact of individual features.</li>
+                <li>Builds trust with users through clear explanations.</li>
+            </ul>
+        </div>
+
+        <button onclick="window.location.href='/xai'"
+                class="mt-10 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105">
+            Go to Explanations
+        </button>
+    </div>
+</body>
+</html>
