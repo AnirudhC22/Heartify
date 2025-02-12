@@ -14,6 +14,41 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
+        .mild-green-bg {
+            background-color: #d4edda;
+        }
+        .btn-purple {
+            background-color: #6a0dad;
+            color: white;
+        }
+        .btn-purple:hover {
+            background-color: #5a008d;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            display: none;
+        }
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #6a0dad;
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4">
@@ -21,14 +56,25 @@
 
     <div class="flex flex-col md:flex-row gap-6 bg-gray-900 shadow-xl rounded-2xl p-6 w-full max-w-6xl">
         <!-- Chart Section -->
-        <div class="w-full md:w-1/2 flex justify-center items-center">
-            <img src="data:image/png;base64,{{ chart }}" alt="SHAP Chart" class="rounded-xl border-4 border-gray-700 shadow-lg">
+        <div class="w-full md:w-1/2 flex justify-center items-center {% if chart_id == max_chart %}mild-green-bg{% endif %} rounded-xl border-4 border-gray-700 shadow-lg p-2">
+            {% if chart.startswith("data:image/png;base64,") %}
+                <!-- Render PNG Charts -->
+                <img src="{{ chart }}" alt="SHAP Chart" class="rounded-xl w-full">
+            {% else %}
+                <!-- Render HTML SHAP Force Plot -->
+                <div class="rounded-xl w-full overflow-auto">
+                    {{ chart | safe }}
+                </div>
+            {% endif %}
         </div>
 
         <!-- AI Explanation Section -->
-        <div class="w-full md:w-1/2 bg-gray-800 p-4 rounded-xl shadow-md">
+        <div class="w-full md:w-1/2 bg-gray-800 p-4 rounded-xl shadow-md flex flex-col">
             <h2 class="text-2xl font-semibold text-blue-400 mb-4">Explanation</h2>
-            <p class="text-gray-300 leading-relaxed">{{ ai_explanation }}</p>
+            <!-- Scrollable Content -->
+            <div class="flex-grow text-gray-300 leading-relaxed overflow-y-auto p-5 border border-gray-600 rounded-md">
+                {{ ai_explanation }}
+            </div>
         </div>
     </div>
 
@@ -39,8 +85,44 @@
         </a>
 
         <a href="/xai?chart_id={{ next_chart }}">
-            <button class="bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-md transition" {% if chart_id == (max_chart) %}disabled{% endif %}>Next</button>
+            <button class="bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-md transition" {% if chart_id == max_chart %}disabled{% endif %}>Next</button>
+        </a>
+
+        <a href="/">
+            <button class="btn-purple py-2 px-4 rounded-md shadow-md transition transform hover:scale-105">Back to Home</button>
         </a>
     </div>
+
+    <!-- Generate Report Button -->
+    {% if chart_id == max_chart %}
+    <div class="mt-6">
+        <button onclick="generateReport()" class="bg-green-600 hover:bg-green-500 text-white py-3 px-6 rounded-xl shadow-md transition transform hover:scale-105">Generate Report</button>
+    </div>
+    {% endif %}
+
+    <!-- Loading Overlay -->
+    <div class="overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        function generateReport() {
+    document.getElementById('loadingOverlay').style.display = 'flex';
+
+    // Open the report download in a new tab
+    const downloadWindow = window.open('/generate_report', '_blank');
+
+    // Check if the download window has closed
+    const checkDownload = setInterval(() => {
+        if (downloadWindow.closed) {
+            clearInterval(checkDownload);
+            document.getElementById('loadingOverlay').style.display = 'none';
+            window.location.href = '/report_done'; // Redirect to a confirmation page
+        }
+    }, 1000);  // Check every second
+}
+
+    </script>
+
 </body>
 </html>
