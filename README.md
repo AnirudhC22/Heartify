@@ -41,6 +41,25 @@ Heartify is an advanced heart disease prediction web application built with Flas
 5. **Access the App:**
    Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 
+
+## Few Screenshots
+<img src="https://drive.google.com/uc?export=view&id=18X7OOPya93xQ3zl9M7E7aKaH2fNKPG7t" alt="Screenshot 1" width="600">
+
+<img src="https://drive.google.com/uc?export=view&id=1VdkGvZp-HaJ_IKCj4GL6t24D8Nt1ZVE-" alt="Screenshot 2" width="600">
+
+<img src="https://drive.google.com/uc?export=view&id=1eFzV-2T_LDkVPGiMLDgas2AF0nKyphve" alt="Screenshot 3" width="600">
+
+<img src="https://drive.google.com/uc?export=view&id=1DIDtwX8K69Ss8c4iWwcHvv9aZa2olAan" alt="Screenshot 4" width="600">
+
+<img src="https://drive.google.com/uc?export=view&id=1Xu8Qczn8bicu9hMusRJfTyDabYyOCtU0" alt="Screenshot 5" width="600">
+
+<img src="https://drive.google.com/uc?export=view&id=15E-BTW6o4f3LTspFw9fiQoDi_nN5NLfq" alt="Screenshot 6" width="600">
+
+<img src="https://drive.google.com/uc?export=view&id=1Mu-E9MunPZUbGuYkFeIgs0_UWxS9wxPL" alt="Screenshot 7" width="600">
+
+<img src="https://drive.google.com/uc?export=view&id=1-dnnTYCZ9rBSHd0EIwYimUQ5-_fl5IZD" alt="Screenshot 8" width="600">
+
+
 ## 🌱 Scope for Further Development
 - **Mobile App Integration:** Develop a mobile version for Android and iOS.
 - **Advanced Predictive Models:** Incorporate deep learning models for enhanced accuracy.
