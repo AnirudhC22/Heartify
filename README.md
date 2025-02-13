@@ -45,9 +45,11 @@ Heartify is an advanced heart disease prediction web application built with Flas
 ## Few Screenshots
 <img src="https://drive.google.com/uc?export=view&id=18X7OOPya93xQ3zl9M7E7aKaH2fNKPG7t" alt="Screenshot 1" width="600">
 
+<img src="https://drive.google.com/uc?export=view&id=1eFzV-2T_LDkVPGiMLDgas2AF0nKyphve" alt="Screenshot 3" width="600">
+
 <img src="https://drive.google.com/uc?export=view&id=1VdkGvZp-HaJ_IKCj4GL6t24D8Nt1ZVE-" alt="Screenshot 2" width="600">
 
-<img src="https://drive.google.com/uc?export=view&id=1eFzV-2T_LDkVPGiMLDgas2AF0nKyphve" alt="Screenshot 3" width="600">
+
 
 <img src="https://drive.google.com/uc?export=view&id=1DIDtwX8K69Ss8c4iWwcHvv9aZa2olAan" alt="Screenshot 4" width="600">
 
