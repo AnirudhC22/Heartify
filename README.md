@@ -68,7 +68,7 @@ Heartify is an advanced heart disease prediction web application built with Flas
 - **Real-Time Health Monitoring:** Integrate with wearable devices for real-time data.
 - **Multilingual Support:** Add language options to reach a wider audience.
 - **User Authentication:** Implement secure login and data storage for personalized reports.
-- **Health Recommendations:** Provide AI-driven personalized health and lifestyle recommendations.
+
 
 
 ---
