@@ -18,14 +18,15 @@ Heartify is an advanced heart disease prediction web application built with Flas
 ## ⚙️ Installation Steps
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/Heartify.git
+   git clone https://github.com/saranb565/Heartify.git
    cd Heartify
    ```
 
 2. **Create a Virtual Environment:**
    ```bash
    python -m venv venv
-   source venv/bin/activate   # On Windows: venv\Scripts\activate
+   # On Linux Distros: source venv/bin/activate
+   # On Windows: venv\Scripts\activate
    ```
 
 3. **Install Dependencies:**
